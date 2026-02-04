@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>မေ အတွက် 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pyidaungsu&display=swap');
+
+        body {
+            background: linear-gradient(180deg, #ffe6e9 0%, #ffc2d1 100%);
+            font-family: 'Pyidaungsu', 'Arial', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #d6336c;
+            font-size: 2.5em;
+            text-shadow: 3px 3px #fff;
+            animation: heartbeat 1.5s infinite;
+            margin-top: 20px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    /* Photo Styles */
+        .photo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            z-index: 10;
+        }
+
+        #gf-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 5px solid #ff4d6d;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
+            transition: all 0.5s ease;
+            border-radius: 50%; /* Starts as circle */
+        }
+
+
+
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 25px;
+            border: 6px solid #ff8fa3;
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 5px 0 #c9184a;
+            font-family: 'Pyidaungsu', sans-serif;
+        }
+
+        .btn:active {
+            box-shadow: none;
+            transform: translateY(5px);
+        }
+
+        .music-btn {
+            background-color: #80ed99;
+            box-shadow: 0 5px 0 #57cc99;
+            color: #0c4a28;
+        }
+
+        #display-area {
+            font-size: 5em;
+            margin: 20px 0;
+            min-height: 100px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        #message {
+            color: #800f2f;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-top: 10px;
+            min-height: 1.5em;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff0f3;
+        }
+
+        .sticker {
+            position: fixed;
+            font-size: 3em;
+            animation: flyUp 5s linear forwards;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes flyUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="photo-container">
+        <img id="gf-photo" src="05.jfif" alt="မေ့ပုံလေး">
+    </div>
+
+
+    <div class="container">
+        <h1>ချစ်ရတဲ့ မေ... ပျော်ရွှင်စရာ ချစ်သူများနေ့လေးဖြစ်ပါစေ! 💖</h1>
+        <p>မေဟာ ကိုယ့်အတွက်တော့ အချိုမြိန်ဆုံး လူသားလေးပါ။</p>
+
+        <div id="display-area">🎁</div>
+        <div id="message">အောက်က ခလုတ်လေးတွေကို နှိပ်ကြည့်ပါဦး မေ!</div>
+
+        <br>
+        
+        <button class="btn" onclick="giveChocolate()">မေ့အတွက် ချောကလက် 🍫</button>
+        <button class="btn" onclick="tellReason()">မေ့ကို ချစ်ရတဲ့ အကြောင်းရင်း 💌</button>
+        <button class="btn" onclick="stickerExplosion()">အချစ်တွေ အများကြီးပေးမယ် 🎉</button>
+        
+        <br><br>
+        
+        <audio id="mySong" src="001.mp3" loop></audio>
+        <button class="btn music-btn" onclick="toggleMusic()">🎵 တို့နှစ်ယောက် သီချင်းနားထောင်မယ်</button>
+    </div>
+
+    <script>
+        const reasons = [
+            "မေ့ရဲ့ အပြုံးလေးတွေက ကမ္ဘာပေါ်မှာ အလှဆုံးပဲ! 😍",
+            "မေက အရမ်းစိတ်ထားကောင်းပြီး ကြင်နာတတ်လို့! 🌸",
+            "မေနဲ့ရှိနေရင် အမြဲတမ်း ပျော်နေရလို့! 😂",
+            "မေက ကိုယ့်ရဲ့ အချစ်ဆုံးသူလေးမို့လို့! 💑",
+            "မေ့ရဲ့ မျက်ဝန်းလေးတွေကို အရမ်းမြတ်နိုးတယ်! 👀",
+            "မေရှိနေရင် အရာရာတိုင်းက ပြည့်စုံနေတာပဲ! ✨"
+        ];
+
+        const chocolates = ["🍫", "🍩", "🍪", "🧁", "🍬", "🍰"];
+        const stickers = ["💖", "မေ", "🥰", "🌹", "💋", "💌", "🐰", "👑", "💎"];
+
+        let isPlaying = false;
+        const song = document.getElementById("mySong");
+
+        function toggleMusic() {
+            if (isPlaying) {
+                song.pause();
+                isPlaying = false;
+                document.querySelector(".music-btn").innerText = "🎵 တို့နှစ်ယောက် သီချင်းနားထောင်မယ်";
+            } else {
+                song.play();
+                isPlaying = true;
+                document.querySelector(".music-btn").innerText = "⏸ သီချင်း ခဏရပ်မယ်";
+                createStickers(5);
+            }
+        }
+
+        function giveChocolate() {
+            const randomChoco = chocolates[Math.floor(Math.random() * chocolates.length)];
+            document.getElementById("display-area").innerText = randomChoco;
+            document.getElementById("message").innerText = "ချိုချိုလေး စားလိုက်နော် မေ! 🍬";
+            createStickers(5);
+        }
+
+        function tellReason() {
+            const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+            document.getElementById("display-area").innerText = "💌";
+            document.getElementById("message").innerText = randomReason;
+            createStickers(3);
+        }
+
+        function stickerExplosion() {
+            createStickers(40);
+            document.getElementById("display-area").innerText = "🥰";
+            document.getElementById("message").innerText = "မေဟာ အကောင်းဆုံးပဲ!";
+        }
+
+        function createStickers(amount) {
+            for (let i = 0; i < amount; i++) {
+                const el = document.createElement("div");
+                el.classList.add("sticker");
+                
+                if (Math.random() > 0.8) {
+                    el.innerText = "မေ";
+                    el.style.fontSize = "1.5em";
+                    el.style.color = "#d6336c";
+                    el.style.fontWeight = "bold";
+                } else {
+                    el.innerText = stickers[Math.floor(Math.random() * stickers.length)];
+                }
+                
+                el.style.left = Math.random() * 90 + "vw";
+                el.style.top = Math.random() * 100 + "vh";
+                el.style.fontSize = (Math.random() * 1.5 + 2) + "em";
+
+                document.body.appendChild(el);
+                setTimeout(() => el.remove(), 5000);
+            }
+        }
+    </script>
+
+</body>
+</html>
